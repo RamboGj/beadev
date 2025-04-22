@@ -1,10 +1,8 @@
-
-
-  import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
 
-const locales = ['en-US', 'pt']
+const locales = ['en-US', 'pt-BR']
 
 function getLocale(request: NextRequest) {
     const negotiatorHeaders: Record<string, string> = {}
@@ -19,10 +17,12 @@ function getLocale(request: NextRequest) {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
+  // Skip middleware for static assets and API routes
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
-    pathname.match(/\.(svg|ico|png|jpg|jpeg|gif|webp|txt|xml|json)$/)
+    pathname.startsWith('/fonts') || // Allow fonts directory access
+    pathname.match(/\.(svg|ico|png|jpg|jpeg|gif|webp|txt|xml|json|woff|woff2|ttf|eot)$/)
   ) {
     return NextResponse.next()
   }
@@ -48,9 +48,9 @@ export function middleware(request: NextRequest) {
   const cspHeader = `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-    style-src 'self' 'nonce-${nonce}';
+    style-src 'self' 'unsafe-inline' 'nonce-${nonce}'; 
     img-src 'self' blob: data:;
-    font-src 'self';
+    font-src 'self' data:;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
@@ -85,6 +85,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next|.*\\..*).*)', 
+    '/((?!_next|favicon.ico|robots.txt.*\\..*).*)', 
   ],
 }

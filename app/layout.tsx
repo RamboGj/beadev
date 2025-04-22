@@ -1,75 +1,74 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.beadev.com.br'),
-  title: {
-    default: "BeaDev | Your Technology Hub",
-    template: "%s | BeaDev",
-  },
-  description: "Stay ahead with BeaDev — your go-to hub for technology news, development tips, and innovation insights.",
-  openGraph: {
-    type: "website",
-    url: "https://www.beadev.com.br",
-    siteName: "BeaDev",
-    title: "BeaDev | Your Technology Hub",
-    description: "Stay ahead with BeaDev — your go-to hub for technology news, development tips, and innovation insights.",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "BeaDev Technology Hub",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "BeaDev | Your Technology Hub",
-    description: "Stay ahead with BeaDev — your go-to hub for technology news, development tips, and innovation insights.",
-    images: ["/og.png"],
-  },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-  },
-  keywords: ['nextjs', 'blog', 'developer', 'software engineering', 'technology', 'posts', 'articles', 'read more', 'hub', 'ai'],
-  alternates: {
-    canonical: "https://www.beadev.com.br",
-    languages: {
-      "en": "https://www.beadev.com.br/en-US",
-      "br": "https://www.beadev.com.br/pt-BR",
-    }
-  }
+	metadataBase: new URL("https://www.beadev.com.br"),
+	title: {
+		default: "BeaDev | Your Technology Hub",
+		template: "%s | BeaDev",
+	},
+	description:
+		"Stay ahead with BeaDev — your go-to hub for technology news, development tips, and innovation insights.",
+	openGraph: {
+		type: "website",
+		url: "https://www.beadev.com.br",
+		siteName: "BeaDev",
+		title: "BeaDev | Your Technology Hub",
+		description:
+			"Stay ahead with BeaDev — your go-to hub for technology news, development tips, and innovation insights.",
+		images: [
+			{
+				url: "/og.png",
+				width: 1200,
+				height: 630,
+				alt: "BeaDev Technology Hub",
+			},
+		],
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "BeaDev | Your Technology Hub",
+		description:
+			"Stay ahead with BeaDev — your go-to hub for technology news, development tips, and innovation insights.",
+		images: ["/og.png"],
+	},
+	icons: {
+		icon: "/favicon.ico",
+		shortcut: "/favicon.ico",
+	},
+	keywords: [
+		"nextjs",
+		"blog",
+		"developer",
+		"software engineering",
+		"technology",
+		"posts",
+		"articles",
+		"read more",
+		"hub",
+		"ai",
+	],
+	alternates: {
+		canonical: "https://www.beadev.com.br",
+		languages: {
+			en: "https://www.beadev.com.br/en-US",
+			br: "https://www.beadev.com.br/pt-BR",
+		},
+	},
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-      <Analytics />
-      <SpeedInsights />
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className="antialiased">{children}</body>
+			<Analytics />
+			<SpeedInsights />
+		</html>
+	);
 }

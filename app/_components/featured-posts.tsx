@@ -1,112 +1,140 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Clock } from "lucide-react"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image";
+import Link from "next/link";
 
-export function FeaturedPosts() {
-  return (
-    <section className="py-10">
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Featured Posts</h1>
-        <Button variant="ghost">View all</Button>
-      </div>
+export interface FeaturedPostsProps {
+	lang: string;
+}
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {/* Main featured post */}
-        <Card className="col-span-full lg:col-span-2 overflow-hidden">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="relative aspect-[16/9] md:aspect-auto md:h-full overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=600&width=800"
-                alt="Featured post"
-                width={800}
-                height={600}
-                className="object-cover h-full w-full transition-transform hover:scale-105 duration-500"
-              />
-            </div>
-            <CardContent className="flex flex-col justify-center p-6">
-              <div className="space-y-4">
-                <Badge className="bg-rose-500 hover:bg-rose-600">Technology</Badge>
-                <h3 className="text-2xl font-bold leading-tight md:text-3xl">
-                  <Link href="#" className="hover:underline">
-                    The Future of Web Development: {"What's"} Next in 2025
-                  </Link>
-                </h3>
-                <p className="text-muted-foreground">
-                  Explore the cutting-edge technologies and methodologies that will shape the future of web development
-                  in the coming years.
-                </p>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Clock className="h-4 w-4" />
-                  <span>10 min read</span>
-                  <span>•</span>
-                  <span>Apr 18, 2025</span>
-                </div>
-              </div>
-            </CardContent>
-          </div>
-        </Card>
+export function FeaturedPosts({ lang }: FeaturedPostsProps) {
+	return (
+		<section id="featuredPosts">
+			<h1 className="w-fit text-[3rem] font-SatoshiBold tracking-[-1.44px] leading-auto bg-clip-text bg-brandGradient text-transparent drop-shadow-[2px_2px_0_rgba(0,0,0,0.16)]">
+				Featured Posts
+			</h1>
 
-        {/* Secondary featured posts */}
-        <Card className="overflow-hidden">
-          <div className="relative aspect-[16/9] overflow-hidden">
-            <Image
-              src="/placeholder.svg?height=400&width=600"
-              alt="Featured post"
-              width={600}
-              height={400}
-              className="object-cover h-full w-full transition-transform hover:scale-105 duration-500"
-            />
-          </div>
-          <CardContent className="p-6">
-            <div className="space-y-3">
-              <Badge className="bg-emerald-500 hover:bg-emerald-600">Design</Badge>
-              <h3 className="text-xl font-bold">
-                <Link href="#" className="hover:underline">
-                  Minimalist Design Principles for Modern Websites
-                </Link>
-              </h3>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" />
-                <span>6 min read</span>
-                <span>•</span>
-                <span>Apr 15, 2025</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+			<div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-12">
+				<Link
+					href={`/${lang}/post-021`}
+					className="group col-span-4 flex items-center gap-x-10"
+				>
+					<Image
+						width={577}
+						height={346}
+						src="/sample01.jpg"
+						alt="Post cover image"
+						className="h-[346px] w-full rounded-[12px] flex-1 outline-1 outline-black/[8%] outline-offset-[-1px]"
+					/>
 
-        <Card className="overflow-hidden">
-          <div className="relative aspect-[16/9] overflow-hidden">
-            <Image
-              src="/placeholder.svg?height=400&width=600"
-              alt="Featured post"
-              width={600}
-              height={400}
-              className="object-cover h-full w-full transition-transform hover:scale-105 duration-500"
-            />
-          </div>
-          <CardContent className="p-6">
-            <div className="space-y-3">
-              <Badge className="bg-amber-500 hover:bg-amber-600">AI</Badge>
-              <h3 className="text-xl font-bold">
-                <Link href="#" className="hover:underline">
-                  How AI is Transforming Content Creation
-                </Link>
-              </h3>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" />
-                <span>8 min read</span>
-                <span>•</span>
-                <span>Apr 12, 2025</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
-  )
+					<div className="max-w-[382px] flex flex-col flex-1">
+						<h3 className="line-clamp-2 text-[2rem] text-neutral800 tracking-[-3%] font-SatoshiBold">
+							Post title lorem ipsum dolor lorem ipsum
+						</h3>
+
+						<p className="font-SatoshiMedium text-neutral600 text-[1.25rem] block mt-2 line-clamp-3">
+							Post title lorem ipsum dolor lorem ipsum lorem ipsum dolor lorem
+							upsum dolor lorem up...
+						</p>
+
+						<div className="flex items-center justify-between mt-1">
+							<span className="text-[0.875rem] font-SatoshiMedium text-neutral300">
+								Feb 9, 2025
+							</span>
+
+							{/* <button
+								className="w-8 h-8 flex hover:scale-110 hover:cursor-pointer transition duration-500 items-center justify-center bg-brandGradient rounded-[8px] outline-1 outline-black/[8%] outline-offset-[-1px]"
+								type="button"
+								aria-label="Share post"
+							>
+								<PaperPlaneTilt
+									className="text-neutral100"
+									size={20}
+									weight="bold"
+								/>
+							</button> */}
+						</div>
+					</div>
+				</Link>
+
+				<div className="group col-span-2 flex flex-col items-start">
+					<Image
+						width={486}
+						height={292}
+						src="/sample01.jpg"
+						alt="Post cover image"
+						className="h-[292px] w-full rounded-[12px] object-cover overflow-hidden"
+					/>
+
+					<div className="flex flex-col items-start px-2 mt-2">
+						<h3 className="line-clamp-2 text-[2rem] text-neutral800 tracking-[-3%] font-SatoshiBold leading-normal">
+							Post title lorem ipsum dolor lorem ipsum
+						</h3>
+
+						<p className="font-SatoshiMedium text-neutral600 text-[1.25rem] leading-normal block mt-2 line-clamp-3">
+							Post title lorem ipsum dolor lorem ipsum lorem ipsum dolor lorem
+							upsum dolor lorem up...
+						</p>
+
+						<div className="w-full flex items-center justify-between mt-3">
+							<span className="text-[0.875rem] font-SatoshiMedium text-neutral300">
+								Feb 9, 2025
+							</span>
+
+							{/* <button
+								className="w-8 h-8 flex hover:scale-110 hover:cursor-pointer transition duration-500 items-center justify-center bg-brandGradient rounded-[8px] outline-1 outline-black/[8%] outline-offset-[-1px]"
+								type="button"
+								aria-label="Share post"
+							>
+								<PaperPlaneTilt
+									className="text-neutral100"
+									size={20}
+									weight="bold"
+								/>
+							</button> */}
+						</div>
+					</div>
+				</div>
+
+				<div className="group col-span-2 flex flex-col items-start">
+					<Image
+						width={486}
+						height={292}
+						src="/sample01.jpg"
+						alt="Post cover image"
+						className="h-[292px] w-full rounded-[12px] object-cover overflow-hidden"
+					/>
+
+					<div className="flex flex-col items-start px-2 mt-2">
+						<h3 className="line-clamp-2 text-[2rem] text-neutral800 tracking-[-3%] font-SatoshiBold leading-normal">
+							Post title lorem ipsum dolor lorem ipsum
+						</h3>
+
+						<p className="font-SatoshiMedium text-neutral600 text-[1.25rem] leading-normal block mt-2 line-clamp-3">
+							Post title lorem ipsum dolor lorem ipsum lorem ipsum dolor lorem
+							upsum dolor lorem up...
+						</p>
+
+						<div className="w-full flex items-center justify-between mt-3">
+							<span className="text-[0.875rem] font-SatoshiMedium text-neutral300">
+								Feb 9, 2025
+							</span>
+							{/* 
+							<button
+								className="w-8 h-8 flex hover:scale-110 hover:cursor-pointer transition duration-500 items-center justify-center bg-brandGradient rounded-[8px] outline-1 outline-black/[8%] outline-offset-[-1px]"
+								type="button"
+								aria-label="Share post"
+							>
+								<PaperPlaneTilt
+									className="text-neutral100"
+									size={20}
+									weight="bold"
+								/>
+							</button> */}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	);
 }
