@@ -10,7 +10,7 @@ export function BlogHeader() {
     <header className="border-b">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link aria-label="Go to main page" href="/" className="text-2xl font-bold">
-          <Image src="/logo.svg" width={124} height={40} alt="Be a Dev logo"/>
+          <Image src={`/logo.svg`} width={124} height={40} alt="Be a Dev logo"/>
         </Link>
         <div className="flex items-center gap-4">
           <div className="relative hidden md:block">

@@ -46,7 +46,14 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
   },
-  keywords: ['nextjs', 'blog', 'developer', 'software engineering', 'technology', 'posts', 'articles', 'read more', 'hub', 'ai']
+  keywords: ['nextjs', 'blog', 'developer', 'software engineering', 'technology', 'posts', 'articles', 'read more', 'hub', 'ai'],
+  alternates: {
+    canonical: "https://www.beadev.com.br",
+    languages: {
+      "en": "https://www.beadev.com.br/en-US",
+      "br": "https://www.beadev.com.br/pt-BR",
+    }
+  }
 };
 
 export default function RootLayout({

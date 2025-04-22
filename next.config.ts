@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  basePath: '',
+  skipMiddlewareUrlNormalize: true,
   async headers() {
     return [
         {
@@ -9,10 +11,6 @@ const nextConfig: NextConfig = {
                 {
                     key: 'X-Frame-Options',
                     value: 'DENY',
-                },
-                {
-                  key: 'Content-Security-Policy',
-                  value: "default-src 'self'",
                 },
             ]
         }
