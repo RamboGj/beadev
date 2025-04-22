@@ -56,7 +56,7 @@ export function TrendingPosts() {
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-2">
           <TrendingUp className="h-6 w-6 text-rose-500" />
-          <h2 className="text-3xl font-bold tracking-tight">Trending Now</h2>
+          <h2 className="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-pink500 to-blue500">Trending Now</h2>
         </div>
         <Button variant="ghost" className="gap-1">
           View all <ArrowRight className="h-4 w-4" />
