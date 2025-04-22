@@ -10,7 +10,7 @@ export function FeaturedPosts() {
   return (
     <section className="py-10">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-3xl font-bold tracking-tight">Featured Posts</h2>
+        <h1 className="text-3xl font-bold tracking-tight">Featured Posts</h1>
         <Button variant="ghost">View all</Button>
       </div>
 
