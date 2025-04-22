@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   icons: [
     './favicon.ico'
-  ]
+  ],
 }
 export default function RootLayout({
   children,
