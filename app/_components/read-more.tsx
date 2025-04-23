@@ -11,12 +11,12 @@ export interface FeaturedPostsProps {
 export function ReadMorePosts({ lang }: FeaturedPostsProps) {
 	console.log(lang);
 	return (
-		<section id="featuredPosts">
-			<h1 className="w-fit text-[3rem] font-SatoshiBold tracking-[-1.44px] leading-auto bg-clip-text bg-brandGradient text-transparent drop-shadow-[2px_2px_0_rgba(0,0,0,0.16)]">
+		<section className="px-4 lg:px-0" id="readMorePosts">
+			<h1 className="w-fit text-[3rem] font-SatoshiBold tracking-[-1.44px] leading-auto bg-clip-text bg-brandGradient text-transparent  dark:drop-shadow-[2px_2px_0_rgba(255,255,255,0.16)] drop-shadow-[2px_2px_0_rgba(0,0,0,0.16)]">
 				Read more
 			</h1>
 
-			<div className="grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-12">
+			<div className="grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 lg:mt-12">
 				{Array.from({ length: 12 }).map((_, index) => {
 					return (
 						<div

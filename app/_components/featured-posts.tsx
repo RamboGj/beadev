@@ -9,15 +9,15 @@ export interface FeaturedPostsProps {
 
 export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 	return (
-		<section id="featuredPosts">
-			<h1 className="w-fit text-[3rem] font-SatoshiBold tracking-[-1.44px] leading-auto bg-clip-text bg-brandGradient text-transparent drop-shadow-[2px_2px_0_rgba(0,0,0,0.16)]">
+		<section className="px-4 lg:px-0" id="featuredPosts">
+			<h1 className="w-fit text-[3rem] font-SatoshiBold tracking-[-1.44px] leading-auto bg-clip-text bg-brandGradient text-transparent dark:drop-shadow-[2px_2px_0_rgba(255,255,255,0.16)] drop-shadow-[2px_2px_0_rgba(0,0,0,0.16)]">
 				Featured Posts
 			</h1>
 
-			<div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-12">
+			<div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 lg:mt-12">
 				<Link
 					href={`/${lang}/post-021`}
-					className="group col-span-4 flex items-center gap-x-10"
+					className="w-full group col-span-1 md:col-span-2 lg:col-span-4 flex-col md:flex-row flex items-center gap-x-10"
 				>
 					<Image
 						width={577}
@@ -27,7 +27,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 						className="h-[346px] w-full rounded-[12px] flex-1 outline-1 outline-black/[8%] outline-offset-[-1px]"
 					/>
 
-					<div className="max-w-[382px] flex flex-col flex-1">
+					<div className="md:max-w-[382px] flex flex-col flex-1 mt-2 md:mt-0">
 						<h3 className="line-clamp-2 text-[2rem] text-neutral800 tracking-[-3%] font-SatoshiBold">
 							Post title lorem ipsum dolor lorem ipsum
 						</h3>
@@ -57,7 +57,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 					</div>
 				</Link>
 
-				<div className="group col-span-2 flex flex-col items-start">
+				<div className="group col-span-1 lg:col-span-2 flex flex-col items-start">
 					<Image
 						width={486}
 						height={292}
@@ -96,7 +96,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 					</div>
 				</div>
 
-				<div className="group col-span-2 flex flex-col items-start">
+				<div className="group col-span-1 lg:col-span-2 flex flex-col items-start">
 					<Image
 						width={486}
 						height={292}

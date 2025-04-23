@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Moon, Sun } from "@phosphor-icons/react";
 import { useState } from "react";
 import { setCookie } from "cookies-next";
+import { Logo } from "../components/atoms/Logo/Logo";
 
 export function BlogHeader({ themePayload }: { themePayload: string }) {
 	const [theme, setTheme] = useState<string>(themePayload);
@@ -20,19 +21,10 @@ export function BlogHeader({ themePayload }: { themePayload: string }) {
 	};
 
 	return (
-		<header className="border-b border-black/[16%] fixed bg-white/[10%] backdrop-blur-2xl inset-x-0 top-0 z-20">
+		<header className="border-b border-black/[16%] dark:border-white/[16%] fixed bg-transparent backdrop-blur-2xl inset-x-0 top-0 z-20">
 			<div className="max-w-[1120px] mx-auto flex items-center justify-between px-4 lg:px-0 py-5">
-				<Link
-					aria-label="Go to main page"
-					href="/"
-					className="text-2xl font-bold"
-				>
-					<Image
-						src={"/logo.svg"}
-						width={162}
-						height={48}
-						alt="Be a Dev logo"
-					/>
+				<Link aria-label="Go to main page" href="/">
+					<Logo />
 				</Link>
 
 				<button
