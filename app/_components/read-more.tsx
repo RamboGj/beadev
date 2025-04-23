@@ -33,7 +33,7 @@ export function ReadMorePosts({ lang }: FeaturedPostsProps) {
 									height={180}
 									src="/sample01.jpg"
 									alt="Post cover image"
-									className="h-[180px] w-full rounded-[12px] object-cover overflow-hidden outline-1 outline-white/50 outline-offset-[-1px]"
+									className="h-[180px] w-full rounded-[12px] object-cover overflow-hidden outline-1 outline-white/[16%] outline-offset-[-1px]"
 								/>
 
 								<div className="px-2">

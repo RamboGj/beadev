@@ -1,7 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
-export function BlogHeader() {
+import { Moon, Sun } from "@phosphor-icons/react";
+import { useState } from "react";
+import { setCookie } from "cookies-next";
+
+export function BlogHeader({ themePayload }: { themePayload: string }) {
+	const [theme, setTheme] = useState<string>(themePayload);
+
+	const toggleTheme = () => {
+		const htmlElement = document.documentElement;
+		const currentTheme = htmlElement.className;
+		const newTheme = currentTheme === "dark" ? "light" : "dark";
+		htmlElement.className = newTheme;
+		setTheme(newTheme);
+		setCookie("theme", newTheme);
+	};
+
 	return (
 		<header className="border-b border-black/[16%] fixed bg-white/[10%] backdrop-blur-2xl inset-x-0 top-0 z-20">
 			<div className="max-w-[1120px] mx-auto flex items-center justify-between px-4 lg:px-0 py-5">
@@ -17,6 +34,40 @@ export function BlogHeader() {
 						alt="Be a Dev logo"
 					/>
 				</Link>
+
+				<button
+					type="button"
+					className="flex rounded-full p-3 flex-col overflow-hidden relative items-center justify-center hover:cursor-pointer hover:bg-neutral300 bg-neutral200 transition-all duration-500 group"
+					onClick={toggleTheme}
+					aria-label="Switch theme"
+				>
+					{theme === "light" ? (
+						<>
+							<Moon
+								size={20}
+								className="text-neutral800  opacity-0 scale-0 group-hover:animate-showFromTop animate-hideBackIcon absolute"
+							/>
+							<Sun
+								size={20}
+								className="text-neutral800 group-hover:animate-hideIcon animate-showBackIcon"
+							/>
+						</>
+					) : (
+						<>
+							<Sun
+								size={20}
+								className="text-neutral800 opacity-0 scale-0 group-hover:animate-showFromTop animate-hideBackIcon absolute "
+							/>
+							<Moon
+								size={20}
+								className="text-neutral800 group-hover:animate-hideIcon animate-showBackIcon"
+							/>
+						</>
+					)}
+				</button>
+				{/* <button>
+					<Moon
+				</button> */}
 				{/* <div className="flex items-center gap-4">
           <div className="relative hidden md:block">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />

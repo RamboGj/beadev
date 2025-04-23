@@ -53,6 +53,15 @@
 	--font-Satoshi: var(--Satoshi);
 
 	--background-image-brandGradient: var(--brandGradient);
+	--background-image-skeletonGradient: var(--skeletonGradient);
+
+	--animate-skeleton: skeletonKeyframe 3s linear infinite;
+
+	@keyframes skeletonKeyframe {
+		to {
+			transform: translateX(100%);
+		}
+	}
 }
 
 :root {
@@ -78,6 +87,13 @@
 		var(--blue500) 0%,
 		var(--pink500) 100%
 	);
+
+	--skeletonGradient: linear-gradient(
+		to right,
+		transparent 0%,
+		var(--neutral500) 50%,
+		transparent 100%
+	);
 }
 
 .dark {
@@ -92,6 +108,13 @@
 	--neutral500: #949494;
 	--neutral200: #3b3b3b;
 	--neutral100: #000000;
+
+	--skeletonGradient: linear-gradient(
+		to right,
+		transparent 0%,
+		var(--neutral500) 50%,
+		transparent 100%
+	);
 }
 
 @layer base {

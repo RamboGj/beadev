@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.beadev.com.br"),
@@ -59,13 +60,17 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const cookiesStore = await cookies();
+
+	const theme = cookiesStore.get("theme")?.value || "";
+
 	return (
-		<html lang="en">
+		<html className={theme} lang="en">
 			<body className="antialiased">{children}</body>
 			<Analytics />
 			<SpeedInsights />
