@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { cookies } from "next/headers";
+import { AdSense } from "./_components/Adsense";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.beadev.com.br"),
@@ -74,6 +75,7 @@ export default async function RootLayout({
 			<body className="antialiased">{children}</body>
 			<Analytics />
 			<SpeedInsights />
+			<AdSense />
 		</html>
 	);
 }
