@@ -53,7 +53,6 @@ export const metadata: Metadata = {
 		"ai",
 	],
 	alternates: {
-		canonical: "https://www.beadev.com.br",
 		languages: {
 			en: "https://www.beadev.com.br/en-US",
 			br: "https://www.beadev.com.br/pt-BR",
