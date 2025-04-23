@@ -24,7 +24,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 						height={346}
 						src="/sample01.jpg"
 						alt="Post cover image"
-						className="h-[346px] w-full rounded-[12px] flex-1 outline-1 outline-black/[8%] outline-offset-[-1px]"
+						className="h-[346px] w-full rounded-[12px] flex-1 outline-1 outline-black/[8%] dark:outline-white/[16%] outline-offset-[-1px]"
 					/>
 
 					<div className="md:max-w-[382px] flex flex-col flex-1 mt-2 md:mt-0">
@@ -63,7 +63,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 						height={292}
 						src="/sample01.jpg"
 						alt="Post cover image"
-						className="h-[292px] w-full rounded-[12px] object-cover overflow-hidden"
+						className="h-[292px] w-full rounded-[12px] object-cover overflow-hidden outline-1 outline-black/[8%] dark:outline-white/[16%] outline-offset-[-1px]"
 					/>
 
 					<div className="flex flex-col items-start px-2 mt-2">
@@ -102,7 +102,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 						height={292}
 						src="/sample01.jpg"
 						alt="Post cover image"
-						className="h-[292px] w-full rounded-[12px] object-cover overflow-hidden"
+						className="h-[292px] w-full rounded-[12px] object-cover overflow-hidden outline-1 outline-black/[8%] dark:outline-white/[16%] outline-offset-[-1px]"
 					/>
 
 					<div className="flex flex-col items-start px-2 mt-2">
