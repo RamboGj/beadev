@@ -3,6 +3,10 @@ import { BlogHeader } from "../_components/blog-header";
 import { FeaturedPosts } from "../_components/featured-posts";
 import { ReadMorePosts } from "../_components/read-more";
 import { Skeleton } from "../components/atoms/Skeleton/Skeleton";
+import { getAllArticles } from "@/lib/api";
+
+import { differenceInMilliseconds } from "date-fns";
+import type { ArticleAdProps } from "@/lib/types";
 
 export default async function BlogPage({
 	params,
@@ -10,6 +14,14 @@ export default async function BlogPage({
 	const [{ lang }, cookiesStore] = await Promise.all([params, cookies()]);
 
 	const theme = cookiesStore.get("theme")?.value || "";
+
+	const started = Date.now();
+	const articles: ArticleAdProps[] = await getAllArticles();
+
+	console.log(
+		"Time ellapsed ->",
+		differenceInMilliseconds(Date.now(), started),
+	);
 
 	return (
 		<div className="min-h-screen bg-neutral100">
