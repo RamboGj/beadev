@@ -28,7 +28,7 @@ async function fetchGraphQL(query: string, preview = false) {
 						: process.env.CONTENTFUL_ACCESS_TOKEN
 				}`,
 			},
-			body: JSON.stringify({ query, variables: { locale: "pt-BR" } }),
+			body: JSON.stringify({ query }),
 			// Associate all fetches for articles with an "articles" cache tag so content can
 			// be revalidated or updated from Contentful on publish
 			next: { tags: ["articles"] },
@@ -42,16 +42,18 @@ function extractArticleEntries(fetchResponse: any) {
 	return fetchResponse?.data?.postCollection?.items;
 }
 
-export async function getAllArticles(
-	// For this demo set the default limit to always return 3 articles.
-	limit = 3,
-	// By default this function will return published content but will provide an option to
-	// return draft content for reviewing articles before they are live
+export async function getAllArticles({
+	limit = 10,
 	isDraftMode = false,
-) {
+	locale = "en-US",
+}: {
+	limit?: number;
+	isDraftMode?: boolean;
+	locale?: string;
+}) {
 	const articles = await fetchGraphQL(
 		`query {
-        postCollection(where:{slug_exists: true}, limit: ${limit}) {
+        postCollection(where:{slug_exists: true}, limit: ${limit}, locale: "${locale}") {
             items {
                 ${ARTICLE_GRAPHQL_FIELDS}
             }

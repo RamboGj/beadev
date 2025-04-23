@@ -14,10 +14,14 @@ export default async function BlogPage({
 	const [{ lang }, cookiesStore] = await Promise.all([params, cookies()]);
 
 	const theme = cookiesStore.get("theme")?.value || "";
+	console.log("lang ->", lang);
 
 	const started = Date.now();
-	const articles: ArticleAdProps[] = await getAllArticles();
+	const articles: ArticleAdProps[] = await getAllArticles({
+		locale: lang,
+	});
 
+	console.log("articles ->", articles);
 	console.log(
 		"Time ellapsed ->",
 		differenceInMilliseconds(Date.now(), started),
