@@ -20,12 +20,38 @@ export function BlogHeader({ themePayload }: { themePayload: string }) {
 		setCookie("theme", newTheme);
 	};
 
+	const openInBrowser = () => {
+		const userAgent = navigator.userAgent.toLowerCase();
+
+		const url = "https://beadev.com.br";
+
+		if (userAgent.includes("android")) {
+			// Android intent
+			const intentUrl = `intent://${url.replace(/^https?:\/\//, "")}#Intent;scheme=https;package=com.android.chrome;end`;
+			window.location.href = intentUrl;
+		} else if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
+			// iOS doesn't support intents, prompt to open in Safari
+			window.open(url, "_blank");
+		} else {
+			window.open(url, "_blank");
+		}
+	};
+
 	return (
 		<header className="border-b border-black/[16%] dark:border-white/[16%] fixed bg-transparent backdrop-blur-2xl inset-x-0 top-0 z-20">
 			<div className="max-w-[1120px] mx-auto flex items-center justify-between px-4 lg:px-0 py-5">
 				<Link aria-label="Go to main page" href="/">
 					<Logo />
 				</Link>
+
+				<button
+					className="text-3xl bg-red-500 h-12 w-32"
+					type="button"
+					onClick={openInBrowser}
+				>
+					Open in browser Open in browser Open in browser Open in browser Open
+					in browser
+				</button>
 
 				<button
 					type="button"
