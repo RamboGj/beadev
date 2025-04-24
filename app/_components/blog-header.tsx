@@ -20,10 +20,9 @@ export function BlogHeader({ themePayload }: { themePayload: string }) {
 		setCookie("theme", newTheme);
 	};
 
+	const url = "https://beadev.com.br";
 	const openInBrowser = () => {
 		const userAgent = navigator.userAgent.toLowerCase();
-
-		const url = "https://beadev.com.br";
 
 		if (userAgent.includes("android")) {
 			// Android intent
@@ -44,14 +43,16 @@ export function BlogHeader({ themePayload }: { themePayload: string }) {
 					<Logo />
 				</Link>
 
-				<button
+				<a
+					href="https://beadev.com.br"
+					target="_blank"
 					className="text-3xl bg-red-500 h-12 w-32"
 					type="button"
-					onClick={openInBrowser}
+					rel="noopener noreferrer"
 				>
 					Open in browser Open in browser Open in browser Open in browser Open
 					in browser
-				</button>
+				</a>
 
 				<button
 					type="button"
