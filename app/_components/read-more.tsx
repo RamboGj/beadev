@@ -48,7 +48,7 @@ export function ReadMorePosts({ lang, articles }: FeaturedPostsProps) {
 								</Link>
 
 								<div className="w-full flex items-center justify-between mt-1 px-2">
-									<span className="text-[0.875rem] font-SatoshiMedium text-neutral300">
+									<span className="text-[0.875rem] font-SatoshiMedium text-neutral400">
 										{format(publishedAt, "dd MMM yyyy")}
 									</span>
 

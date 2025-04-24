@@ -28,9 +28,9 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 					/>
 
 					<div className="md:max-w-[382px] flex flex-col flex-1 mt-2 md:mt-0">
-						<h3 className="line-clamp-2 text-[2rem] text-neutral800 tracking-[-3%] font-SatoshiBold">
+						<h2 className="line-clamp-2 text-[2rem] text-neutral800 tracking-[-3%] font-SatoshiBold">
 							Post title lorem ipsum dolor lorem ipsum
-						</h3>
+						</h2>
 
 						<p className="font-SatoshiMedium text-neutral600 text-[1.25rem] block mt-2 line-clamp-3">
 							Post title lorem ipsum dolor lorem ipsum lorem ipsum dolor lorem
@@ -38,7 +38,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 						</p>
 
 						<div className="flex items-center justify-between mt-1">
-							<span className="text-[0.875rem] font-SatoshiMedium text-neutral300">
+							<span className="text-[0.875rem] font-SatoshiMedium text-neutral400">
 								Feb 9, 2025
 							</span>
 
@@ -59,6 +59,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 
 				<div className="group col-span-1 lg:col-span-2 flex flex-col items-start">
 					<Image
+						loading="lazy"
 						width={486}
 						height={292}
 						src="/sample01.jpg"
@@ -77,7 +78,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 						</p>
 
 						<div className="w-full flex items-center justify-between mt-3">
-							<span className="text-[0.875rem] font-SatoshiMedium text-neutral300">
+							<span className="text-[0.875rem] font-SatoshiMedium text-neutral400">
 								Feb 9, 2025
 							</span>
 
@@ -98,6 +99,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 
 				<div className="group col-span-1 lg:col-span-2 flex flex-col items-start">
 					<Image
+						loading="lazy"
 						width={486}
 						height={292}
 						src="/sample01.jpg"
@@ -116,7 +118,7 @@ export function FeaturedPosts({ lang }: FeaturedPostsProps) {
 						</p>
 
 						<div className="w-full flex items-center justify-between mt-3">
-							<span className="text-[0.875rem] font-SatoshiMedium text-neutral300">
+							<span className="text-[0.875rem] font-SatoshiMedium text-neutral400">
 								Feb 9, 2025
 							</span>
 							{/* 
