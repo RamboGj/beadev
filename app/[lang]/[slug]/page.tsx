@@ -56,7 +56,7 @@ export default async function BlogPostPage({
 
 	console.log("ARTICLE ->", article);
 
-	if (!article) notFound();
+	// if (!article) notFound();
 
 	return <BlogPostPageClient article={article} />;
 }
