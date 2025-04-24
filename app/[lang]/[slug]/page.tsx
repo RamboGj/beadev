@@ -31,6 +31,8 @@ export async function generateMetadata({
 	};
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams({
 	params: { lang },
 }: {
