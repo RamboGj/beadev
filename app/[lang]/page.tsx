@@ -2,7 +2,6 @@ import { cookies } from "next/headers";
 import { BlogHeader } from "../_components/blog-header";
 import { FeaturedPosts } from "../_components/featured-posts";
 import { ReadMorePosts } from "../_components/read-more";
-import { Skeleton } from "../components/atoms/Skeleton/Skeleton";
 import { getAllArticles } from "@/lib/api";
 
 import { differenceInMilliseconds } from "date-fns";

@@ -10,3 +10,21 @@ export interface ArticleAdProps {
 		url: string;
 	};
 }
+
+export interface ArticleProps extends ArticleAdProps {
+	content: {
+		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+		json: any;
+		links: {
+			assets: {
+				block: {
+					sys: {
+						id: string;
+					};
+					url: string;
+					description: string;
+				};
+			};
+		};
+	};
+}

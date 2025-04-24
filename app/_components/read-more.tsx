@@ -29,8 +29,8 @@ export function ReadMorePosts({ lang, articles }: FeaturedPostsProps) {
 								>
 									<Image
 										loading="lazy"
-										width={300}
-										height={180}
+										width="1200"
+										height="630"
 										src={cover.url}
 										alt={title}
 										className="h-[180px] w-full rounded-[12px] object-cover overflow-hidden outline-1 outline-white/[16%] outline-offset-[-1px]"

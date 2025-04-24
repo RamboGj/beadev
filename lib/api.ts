@@ -65,14 +65,51 @@ export async function getAllArticles({
 	return extractArticleEntries(articles);
 }
 
-export async function getArticle(slug: string, isDraftMode = false) {
+export async function getArticleAd({
+	slug,
+	isDraftMode = false,
+	locale = "en-US",
+}: { slug: string; isDraftMode?: boolean; locale?: string }) {
 	const article = await fetchGraphQL(
 		`query {
-        postCollection(where:{slug: "${slug}"}, limit: 1, preview: ${
+        postCollection(where:{slug: "${slug}"}, limit: 1, locale: "${locale}", preview: ${
 					isDraftMode ? "true" : "false"
 				}) {
           items {
             ${ARTICLE_GRAPHQL_FIELDS}
+          }
+        }
+      }`,
+		isDraftMode,
+	);
+	return extractArticleEntries(article)[0];
+}
+
+export async function getArticle({
+	slug,
+	isDraftMode = false,
+	locale = "en-US",
+}: { slug: string; isDraftMode?: boolean; locale?: string }) {
+	const article = await fetchGraphQL(
+		`query {
+        postCollection(where:{slug: "${slug}"}, limit: 1, locale: "${locale}", preview: ${
+					isDraftMode ? "true" : "false"
+				}) {
+          items {
+            ${ARTICLE_GRAPHQL_FIELDS},
+			content {
+				json
+				links {
+					assets {
+						block {
+							sys {
+								id
+							}
+							url
+							description
+						}
+					}
+		  }}
           }
         }
       }`,
