@@ -6,44 +6,44 @@ import { notFound } from "next/navigation";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BlogPostPageClient } from "./_components/client";
 
-export async function generateMetadata({
-	params,
-}: { params: Promise<{ slug: string; lang: string }> }) {
-	const { slug, lang } = await params;
+// export async function generateMetadata({
+// 	params,
+// }: { params: Promise<{ slug: string; lang: string }> }) {
+// 	const { slug, lang } = await params;
 
-	const articleAd: ArticleAdProps = await getArticle({ slug, locale: lang });
+// 	const articleAd: ArticleAdProps = await getArticle({ slug, locale: lang });
 
-	if (!articleAd) {
-		return {
-			openGraph: {
-				title: "Not found",
-				description: "Article not found",
-			},
-		};
-	}
+// 	if (!articleAd) {
+// 		return {
+// 			openGraph: {
+// 				title: "Not found",
+// 				description: "Article not found",
+// 			},
+// 		};
+// 	}
 
-	return {
-		openGraph: {
-			title: articleAd.title,
-			description: articleAd.subtitle,
-			images: [articleAd.cover.url],
-		},
-	};
-}
+// 	return {
+// 		openGraph: {
+// 			title: articleAd.title,
+// 			description: articleAd.subtitle,
+// 			images: [articleAd.cover.url],
+// 		},
+// 	};
+// }
 
-export const dynamicParams = false;
+// export const dynamicParams = false;
 
-export async function generateStaticParams({
-	params: { lang },
-}: {
-	params: { lang: string };
-}) {
-	const allArticles: ArticleAdProps[] = await getAllArticles({ locale: lang });
+// export async function generateStaticParams({
+// 	params: { lang },
+// }: {
+// 	params: { lang: string };
+// }) {
+// 	const allArticles: ArticleAdProps[] = await getAllArticles({ locale: lang });
 
-	return allArticles.map((article) => ({
-		slug: article.slug,
-	}));
-}
+// 	return allArticles.map((article) => ({
+// 		slug: article.slug,
+// 	}));
+// }
 
 export default async function BlogPostPage({
 	params,
@@ -56,7 +56,7 @@ export default async function BlogPostPage({
 
 	console.log("ARTICLE ->", article);
 
-	// if (!article) notFound();
+	if (!article) notFound();
 
 	return <BlogPostPageClient article={article} />;
 }
