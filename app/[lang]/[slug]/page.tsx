@@ -6,31 +6,6 @@ import { notFound } from "next/navigation";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BlogPostPageClient } from "./_components/client";
 
-// export async function generateMetadata({
-// 	params,
-// }: { params: Promise<{ slug: string; lang: string }> }) {
-// 	const { slug, lang } = await params;
-
-// 	const articleAd: ArticleAdProps = await getArticle({ slug, locale: lang });
-
-// 	if (!articleAd) {
-// 		return {
-// 			openGraph: {
-// 				title: "Not found",
-// 				description: "Article not found",
-// 			},
-// 		};
-// 	}
-
-// 	return {
-// 		openGraph: {
-// 			title: articleAd.title,
-// 			description: articleAd.subtitle,
-// 			images: [articleAd.cover.url],
-// 		},
-// 	};
-// }
-
 // export const dynamicParams = false;
 
 // export async function generateStaticParams({
@@ -44,6 +19,31 @@ import { BlogPostPageClient } from "./_components/client";
 // 		slug: article.slug,
 // 	}));
 // }
+
+export async function generateMetadata({
+	params,
+}: { params: Promise<{ slug: string; lang: string }> }) {
+	const { slug, lang } = await params;
+
+	const articleAd: ArticleAdProps = await getArticle({ slug, locale: lang });
+
+	if (!articleAd) {
+		return {
+			openGraph: {
+				title: "Not found",
+				description: "Article not found",
+			},
+		};
+	}
+
+	return {
+		openGraph: {
+			title: articleAd.title,
+			description: articleAd.subtitle,
+			images: [articleAd.cover.url],
+		},
+	};
+}
 
 export default async function BlogPostPage({
 	params,
