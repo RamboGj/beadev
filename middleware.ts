@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse, userAgent } from "next/server";
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
@@ -14,10 +14,24 @@ function getLocale(request: NextRequest) {
 	return match(languages, locales, defaultLocale);
 }
 
+export const isMobile = (userAgent: string): boolean => {
+	return /android.+mobile|ip(hone|[oa]d)/i.test(userAgent);
+};
+
 export function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl;
 
-	// Skip middleware for static assets and API routes
+	const { browser, device, os } = userAgent(request);
+
+	console.log("browser ->", browser);
+	console.log("device ->", device);
+	console.log("os ->", os);
+
+	if (browser.name === "Instagram") {
+		request.nextUrl.pathname = `/inst?=${device.type}&os=${os}`;
+		return NextResponse.redirect(request.nextUrl);
+	}
+
 	if (
 		pathname.startsWith("/_next") ||
 		pathname.startsWith("/api") ||
@@ -26,6 +40,7 @@ export function middleware(request: NextRequest) {
 			/\.(svg|ico|png|jpg|jpeg|gif|webp|txt|xml|json|woff|woff2|ttf|eot)$/,
 		)
 	) {
+		// Skip middleware for static assets and API routes
 		return NextResponse.next();
 	}
 
