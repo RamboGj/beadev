@@ -2,12 +2,22 @@
 
 import { useEffect, useState } from "react";
 
+const embeddedBrowsersList = [
+	"instagram",
+	"fbav",
+	"fban",
+	"fb_iab",
+	"tiktok",
+	"twitter",
+	"snapchat",
+];
+
 export function BrowserVerifier() {
 	const [uaState, setUaState] = useState<{
-		browser: string;
+		embedded: boolean;
 		deviceType: string;
 	}>({
-		browser: "",
+		embedded: false,
 		deviceType: "",
 	});
 
@@ -15,29 +25,23 @@ export function BrowserVerifier() {
 		const ua = navigator.userAgent;
 		console.log("UA ->", ua);
 
-		const isInstagram = ua?.indexOf("Instagram") > -1;
-		if (isInstagram) {
-			const isAndroid = ua.indexOf("Android") > -1;
+		const isInAppBrowser = embeddedBrowsersList.includes(ua.toLowerCase());
+		console.log("isInAppBrowser ->", isInAppBrowser);
+
+		if (isInAppBrowser) {
+			const isAndroid = ua.toLowerCase().indexOf("android") > -1;
 
 			setUaState({
-				browser: "Instagram",
+				embedded: true,
 				deviceType: isAndroid ? "android" : "ios",
 			});
 			console.log(
 				"The website is being accessed through the Instagram embedded browser.",
 			);
-		} else {
-			setUaState({
-				browser: "",
-				deviceType: "",
-			});
-			console.log(
-				"The website is not being accessed through the Instagram embedded browser.",
-			);
 		}
 	}, []);
 
-	if (uaState.browser === "Instagram") {
+	if (uaState.embedded) {
 		return (
 			<div className="fixed inset-x-0 h-screen bg-red-500 z-50">
 				<button type="button">Open IOS link</button>
