@@ -25,10 +25,6 @@ export function middleware(request: NextRequest) {
 
 	if (browser.name === "Instagram") {
 		request.nextUrl.pathname = "/inst";
-
-		request.nextUrl.searchParams.set("device", device.type || "unknown");
-		request.nextUrl.searchParams.set("os", os.name || "unknown");
-
 		return NextResponse.redirect(request.nextUrl);
 	}
 
