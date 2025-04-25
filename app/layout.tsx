@@ -72,11 +72,13 @@ export default async function RootLayout({
 
 	return (
 		<html className={theme} lang="en">
-			<body className="antialiased">{children}</body>
+			<body className="antialiased">
+				<BrowserVerifier />
+				{children}
+			</body>
 			<Analytics />
 			<SpeedInsights />
 			<AdSense />
-			<BrowserVerifier />
 		</html>
 	);
 }
