@@ -18,6 +18,18 @@ export const isMobile = (userAgent: string): boolean => {
 	return /android.+mobile|ip(hone|[oa]d)/i.test(userAgent);
 };
 
+var ua = navigator.userAgent || navigator.vendor || window.opera;
+var isInstagram = ua.indexOf("Instagram") > -1 ? true : false;
+if (isInstagram) {
+	console.log(
+		"The website is being accessed through the Instagram embedded browser.",
+	);
+} else {
+	console.log(
+		"The website is not being accessed through the Instagram embedded browser.",
+	);
+}
+
 export function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl;
 
@@ -28,7 +40,11 @@ export function middleware(request: NextRequest) {
 	console.log("os ->", os);
 
 	if (browser.name === "Instagram") {
-		request.nextUrl.pathname = `/inst?=${device.type}&os=${os}`;
+		request.nextUrl.pathname = "/inst";
+
+		request.nextUrl.searchParams.set("device", device.type || "unknown");
+		request.nextUrl.searchParams.set("os", os.name || "unknown");
+
 		return NextResponse.redirect(request.nextUrl);
 	}
 
