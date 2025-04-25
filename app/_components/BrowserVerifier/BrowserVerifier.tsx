@@ -8,7 +8,6 @@ const embeddedBrowsersList = [
 	"fban",
 	"fb_iab",
 	"tiktok",
-	"twitter",
 	"snapchat",
 ];
 
@@ -25,12 +24,14 @@ export function BrowserVerifier() {
 		const ua = navigator.userAgent;
 		console.log("UA ->", ua);
 
+		const isXEmbedded = document.referrer.includes("t.co");
+
 		const isInAppBrowser = embeddedBrowsersList.some((browser) =>
 			ua.toLowerCase().includes(browser),
 		);
 		console.log("isInAppBrowser ->", isInAppBrowser);
 
-		if (isInAppBrowser) {
+		if (isInAppBrowser || isXEmbedded) {
 			const isAndroid = ua.toLowerCase().indexOf("android") > -1;
 
 			setUaState({
