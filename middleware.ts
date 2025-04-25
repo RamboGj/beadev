@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse, userAgent } from "next/server";
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
@@ -16,6 +16,8 @@ function getLocale(request: NextRequest) {
 
 export function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl;
+
+	const {} = userAgent();
 
 	if (pathname === "/") {
 		// Check if already has locale

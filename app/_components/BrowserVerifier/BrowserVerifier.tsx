@@ -17,7 +17,7 @@ export function BrowserVerifier() {
 
 		const isInstagram = ua?.indexOf("Instagram") > -1;
 		if (isInstagram) {
-			const isAndroid = ua.indexOf("android") > -1;
+			const isAndroid = ua.indexOf("Android") > -1;
 
 			setUaState({
 				browser: "Instagram",
@@ -36,11 +36,6 @@ export function BrowserVerifier() {
 			);
 		}
 	}, []);
-
-	// if (browser.name === "Instagram") {
-	// 	request.nextUrl.pathname = "/inst";
-	// 	return NextResponse.redirect(request.nextUrl);
-	// }
 
 	if (uaState.browser === "Instagram") {
 		return (
