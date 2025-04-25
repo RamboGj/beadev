@@ -25,7 +25,9 @@ export function BrowserVerifier() {
 		const ua = navigator.userAgent;
 		console.log("UA ->", ua);
 
-		const isInAppBrowser = embeddedBrowsersList.includes(ua.toLowerCase());
+		const isInAppBrowser = embeddedBrowsersList.some((browser) =>
+			ua.toLowerCase().includes(browser),
+		);
 		console.log("isInAppBrowser ->", isInAppBrowser);
 
 		if (isInAppBrowser) {
