@@ -43,17 +43,6 @@ export function BlogHeader({ themePayload }: { themePayload: string }) {
 					<Logo />
 				</Link>
 
-				<a
-					href="https://beadev.com.br"
-					target="_blank"
-					className="text-3xl bg-red-500 h-12 w-32"
-					type="button"
-					rel="noopener noreferrer"
-				>
-					Open in browser Open in browser Open in browser Open in browser Open
-					in browser
-				</a>
-
 				<button
 					type="button"
 					className="flex rounded-full p-3 flex-col overflow-hidden relative items-center justify-center hover:cursor-pointer hover:bg-neutral300 bg-neutral200 transition-all duration-500 group"
