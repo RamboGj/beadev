@@ -23,22 +23,10 @@ export function middleware(request: NextRequest) {
 	console.log("device ->", device);
 	console.log("os ->", os);
 
-	if (browser.name === "Instagram") {
-		request.nextUrl.pathname = "/inst";
-		return NextResponse.redirect(request.nextUrl);
-	}
-
-	if (
-		pathname.startsWith("/_next") ||
-		pathname.startsWith("/api") ||
-		pathname.startsWith("/fonts") || // Allow fonts directory access
-		pathname.match(
-			/\.(svg|ico|png|jpg|jpeg|gif|webp|txt|xml|json|woff|woff2|ttf|eot)$/,
-		)
-	) {
-		// Skip middleware for static assets and API routes
-		return NextResponse.next();
-	}
+	// if (browser.name === "Instagram") {
+	// 	request.nextUrl.pathname = "/inst";
+	// 	return NextResponse.redirect(request.nextUrl);
+	// }
 
 	if (pathname === "/") {
 		// Check if already has locale
