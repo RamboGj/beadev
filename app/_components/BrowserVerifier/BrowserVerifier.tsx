@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+"use client";
 
-("use client");
+import { useEffect, useState } from "react";
 
 export function BrowserVerifier() {
 	const [displayModal, setDisplayModal] = useState<boolean>(false);
