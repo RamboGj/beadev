@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import "./globals.css";
+import "../globals.css";
 import { cookies } from "next/headers";
-import { AdSense } from "./_components/Adsense";
-import { BrowserVerifier } from "./_components/BrowserVerifier/BrowserVerifier";
+import { AdSense } from "../_components/Adsense";
+import { BrowserVerifier } from "../_components/BrowserVerifier/BrowserVerifier";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.beadev.com.br"),
@@ -73,7 +73,7 @@ export default async function RootLayout({
 	return (
 		<html className={theme} lang="en">
 			<body className="antialiased">
-				<BrowserVerifier />
+				{/* <BrowserVerifier /> */}
 				{children}
 			</body>
 			<Analytics />

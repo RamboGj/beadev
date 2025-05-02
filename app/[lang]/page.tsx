@@ -4,7 +4,6 @@ import { FeaturedPosts } from "../_components/featured-posts";
 import { ReadMorePosts } from "../_components/read-more";
 import { getAllArticles } from "@/lib/api";
 
-import { differenceInMilliseconds } from "date-fns";
 import type { ArticleAdProps } from "@/lib/types";
 
 export default async function BlogPage({
@@ -13,18 +12,10 @@ export default async function BlogPage({
 	const [{ lang }, cookiesStore] = await Promise.all([params, cookies()]);
 
 	const theme = cookiesStore.get("theme")?.value || "";
-	console.log("lang ->", lang);
 
-	const started = Date.now();
 	const articles: ArticleAdProps[] = await getAllArticles({
 		locale: lang,
 	});
-
-	console.log("articles ->", articles);
-	console.log(
-		"Time ellapsed ->",
-		differenceInMilliseconds(Date.now(), started),
-	);
 
 	return (
 		<div className="min-h-screen bg-neutral100">

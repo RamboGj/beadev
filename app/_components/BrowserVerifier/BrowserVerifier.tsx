@@ -22,14 +22,12 @@ export function BrowserVerifier() {
 
 	useEffect(() => {
 		const ua = navigator.userAgent;
-		console.log("UA ->", ua);
 
 		const isXEmbedded = document.referrer.includes("t.co");
 
 		const isInAppBrowser = embeddedBrowsersList.some((browser) =>
 			ua.toLowerCase().includes(browser),
 		);
-		console.log("isInAppBrowser ->", isInAppBrowser);
 
 		if (isInAppBrowser || isXEmbedded) {
 			const isAndroid = ua.toLowerCase().indexOf("android") > -1;
@@ -38,9 +36,6 @@ export function BrowserVerifier() {
 				embedded: true,
 				deviceType: isAndroid ? "android" : "ios",
 			});
-			console.log(
-				"The website is being accessed through the Instagram embedded browser.",
-			);
 		}
 	}, []);
 
