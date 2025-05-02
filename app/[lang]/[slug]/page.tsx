@@ -49,12 +49,8 @@ export default async function BlogPostPage({
 	params,
 }: { params: Promise<{ lang: string; slug: string }> }) {
 	const { lang, slug } = await params;
-	console.log("lang ->", lang);
-	console.log("slug ->", slug);
 
 	const article: ArticleProps = await getArticle({ slug, locale: lang });
-
-	console.log("ARTICLE ->", article);
 
 	if (!article) notFound();
 

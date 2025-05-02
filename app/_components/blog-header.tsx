@@ -1,4 +1,6 @@
 "use client";
+import "react-flagpack/dist/style.css";
+import Flag from "react-flagpack";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -42,6 +44,10 @@ export function BlogHeader({ themePayload }: { themePayload: string }) {
 				<Link aria-label="Go to main page" href="/">
 					<Logo />
 				</Link>
+
+				{/* <Flag code="NL" />
+				<Flag code="NLD" />
+				<Flag code="528" /> */}
 
 				<button
 					type="button"
