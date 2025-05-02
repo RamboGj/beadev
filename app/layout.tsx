@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import "../globals.css";
+import "./globals.css";
 import { cookies } from "next/headers";
 import { AdSense } from "./_components/Adsense";
 import { BrowserVerifier } from "./_components/BrowserVerifier/BrowserVerifier";
