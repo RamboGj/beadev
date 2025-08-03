@@ -1,24 +1,24 @@
 import { getAllArticles, getArticle } from "@/lib/api";
 import type { ArticleAdProps, ArticleProps } from "@/lib/types";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BlogPostPageClient } from "./_components/client";
 
-// export const dynamicParams = false;
+export async function generateStaticParams({
+	params: { lang },
+}: {
+	params: { lang: string };
+}) {
+	const allArticles: ArticleAdProps[] = await getAllArticles({
+		locale: lang,
+		limit: 5,
+	});
 
-// export async function generateStaticParams({
-// 	params: { lang },
-// }: {
-// 	params: { lang: string };
-// }) {
-// 	const allArticles: ArticleAdProps[] = await getAllArticles({ locale: lang });
-
-// 	return allArticles.map((article) => ({
-// 		slug: article.slug,
-// 	}));
-// }
+	return allArticles.map((article) => ({
+		slug: article.slug,
+	}));
+}
 
 export async function generateMetadata({
 	params,

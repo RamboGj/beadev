@@ -10,6 +10,7 @@ import Link from "next/link";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { Link2, Share } from "lucide-react";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const getOptions = (includes: any) => {
@@ -122,6 +123,14 @@ export function BlogPostPageClient({ article }: { article: ArticleProps }) {
 					)}
 				</article>
 			</div>
+
+			<button
+				aria-label="Share Post"
+				type="button"
+				className="fixed bottom-16 right-16 w-16 h-16 rounded-full bg-blue-600 drop-shadow-[rgba(0,0,0,0.5)] flex items-center justify-center drop-shadow-lg hover:cursor-pointer hover:scale-110 transition duration-500"
+			>
+				<Link2 className="text-white -rotate-45" size={24} />
+			</button>
 		</main>
 	);
 }
