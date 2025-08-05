@@ -19,6 +19,8 @@ export default async function RootLayout({
 
 	const theme = cookiesStore.get("theme")?.value || "";
 
+	console.log("{env.NEXT_PUBLIC_GA_ID", env.NEXT_PUBLIC_GA_ID);
+
 	return (
 		<html className={theme} lang="en">
 			<GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />

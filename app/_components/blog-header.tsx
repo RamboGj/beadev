@@ -9,6 +9,7 @@ import { Moon, Sun } from "@phosphor-icons/react";
 import { useState } from "react";
 import { setCookie } from "cookies-next";
 import { Logo } from "../components/atoms/Logo/Logo";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export function BlogHeader({ themePayload }: { themePayload: string }) {
 	const [theme, setTheme] = useState<string>(themePayload);
@@ -20,6 +21,10 @@ export function BlogHeader({ themePayload }: { themePayload: string }) {
 		htmlElement.className = newTheme;
 		setTheme(newTheme);
 		setCookie("theme", newTheme);
+
+		sendGAEvent("event", "change_theme", {
+			theme: JSON.stringify(newTheme) || "",
+		});
 	};
 
 	const url = "https://beadev.com.br";
