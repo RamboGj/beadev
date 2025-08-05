@@ -10,6 +10,8 @@ export function EnsureGAInit() {
 		if (typeof window !== "undefined" && window.gtag) {
 			console.log("window.tag", window.gtag);
 
+			window.gtag("set", { user_id: MOCK_USER_ID });
+
 			window.gtag("config", env.NEXT_PUBLIC_GA_ID || "", {
 				user_id: MOCK_USER_ID,
 			});
