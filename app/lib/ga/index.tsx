@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { env } from "../env";
 
-const MOCK_USER_ID = "user-0101";
+const MOCK_USER_ID = "user-0101-USING-WINDOW.GTAG('SET')";
 
 export function EnsureGAInit() {
 	useEffect(() => {
